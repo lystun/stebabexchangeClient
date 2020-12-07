@@ -1,28 +1,12 @@
 
-// create a store
-
-export const state = () => {
-    posts: {}
-}
-
-//getters
 export const getters = {
-    posts(state){
-        return state.posts
-    }
-}
+    
+    isAuthenticated(state) {
+        return state.auth.loggedIn
+    },
 
-// mutations
-export const mutations = {
-    SET_POSTS(state, posts ){
-        state.posts = posts
-    }
-}
+    loggedInUser(state) {
+        return state.auth.user
+    },
 
-//actions
-export const actions = {
-    setPosts({commit}, posts){
-        commit("SET_POSTS", posts)
-    }
 }
-

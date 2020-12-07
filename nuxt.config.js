@@ -21,7 +21,7 @@ export default {
             { src: "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js", },
             
             { src: "/js/purpose.core.js" },
-            { src: "/libs/swiper/dist/js/swiper.min.js" },
+            { src: "/libs/swiper/dist/js/swiper.js" },
             { src: "/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.js" },
             { src: "/js/purpose.js" },
         ]
@@ -36,10 +36,19 @@ export default {
         '~/assets/css/main.css',
     ],
 
+    router: {
+        middleware: [
+            'clearValidationErrors',
+        ]
+    },
+
     // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
     plugins: [
         { src: '~/plugins/vue-typed.js' },
         { src: '~/plugins/v-clipboard.js' },
+        { src: '~/plugins/axios.js' },
+        { src: '~/plugins/mixins/user.js' },
+        { src: '~/plugins/mixins/validation.js' },
     ],
 
     // Auto import components (https://go.nuxtjs.dev/config-components)
@@ -51,16 +60,38 @@ export default {
 
     // Modules (https://go.nuxtjs.dev/config-modules)
     modules: [
-        // https://go.nuxtjs.dev/axios
-        '@nuxtjs/axios',
-        // https://go.nuxtjs.dev/pwa
         '@nuxtjs/pwa',
-        '@nuxtjs/style-resources'
+        '@nuxtjs/axios',
+        '@nuxtjs/auth',
+        '@nuxtjs/toast',
+        '@nuxtjs/style-resources',
+        [ 
+            'nuxt-sweetalert2', 
+            {
+                confirmButtonColor : '#f72585',
+                cancelButtonColor : '#273344',
+            }
+        
+        ],
     ],
 
     // Axios module configuration (https://go.nuxtjs.dev/config-axios)
     axios: {
-        // baseURL : "http://ctctwacademyapi.test/api",
+        baseURL : "http://127.0.0.1:8080/api/v1",
+    },
+
+    auth: {
+        strategies: {
+            local: {
+                endpoints: {
+                    login: { url: '/users/login', method: 'post', propertyName: 'token' },
+                    // logout: { url: '/users/logout', method: 'post' },
+                    user: { url: '/users/me', method: 'get', propertyName: 'data' },
+                },
+            }
+        },
+        
+        redirect: false
     },
 
     // Build Configuration (https://go.nuxtjs.dev/config-build)
@@ -80,5 +111,10 @@ export default {
             '~assets/scss/*.scss',
         ],
     },
+
+    toast: {
+        duration: '10000',
+        iconPack: 'fontawesome'
+    }
 
 }

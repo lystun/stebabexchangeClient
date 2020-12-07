@@ -2,18 +2,16 @@
     <div class="blog">
         <section class="jumbotron blog__header bg-gradient-primary">
             <div class="container text-center">
-                <h1 class="header text-white">Post Title</h1>
-                <p class="lead">This is to keep our customers informed and abreast of happenings in the crypto world.</p>
-            
+                <h1 class="header text-white"> {{ post.title }} </h1>
                 <div class="d-flex align-items-center justify-content-center mt-5">
-                    <div>
+                    <!-- <div>
                         <a href="#" class="avatar rounded-circle mr-3">
-                            <img alt="Image placeholder" src="~/assets/img/theme/light/team-6-800x800.jpg">
+                            <img :alt="post.title" :src="post.photo">
                         </a>
-                    </div>
+                    </div> -->
                     <div class="text-left">
-                        <span class="d-block h6 mb-0 text-white">Lystun Tech</span>
-                        <span class="text-sm text-white">20 Nov 2020</span>
+                        <span class="d-block h6 mb-0 text-white">{{ post.author }} </span>
+                        <span class="text-sm text-white"> {{ post.createdAt }} </span>
                     </div>
                 </div>
             </div>
@@ -23,11 +21,11 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-3 bg-info">
-                        Share this news
+                        Share this post
                     </div>
-                    <div class="col-md-9 bg-success">
+                    <div class="col-md-9">
                         <article>
-                            <p class="lead"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse reiciendis facere, quia obcaecati quae accusamus alias veritatis, ad corporis cum doloribus veniam deserunt, laboriosam dolor aliquid nihil cupiditate. Nulla, placeat. </p>  
+                            <p class="lead"> {{ post.content }} </p>
                         </article>
                     </div>
                 </div>
@@ -43,6 +41,7 @@
                 </div>
             </div>
         </section>
+
     </div>
 </template>
 
@@ -55,6 +54,18 @@ export default {
     },
 
     transitions: 'fade',
+
+    mounted(){
+        this.post
+    },
+
+    async asyncData({$axios, params}){
+        const {data} = await $axios.$get(`/posts/slug/${params.slug}`)
+
+        return {
+            post : data.post[0]
+        }
+    },
 
 }
 </script>

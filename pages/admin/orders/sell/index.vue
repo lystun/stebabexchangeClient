@@ -5,63 +5,55 @@
                 <div class="mt-2 mb-4 ml-3">
                     <h3 class="">Sell Orders</h3>
                 </div>
+
+                <div class="col-md-12 text-center justify-content-center my-5" v-if="!orders">
+                    <div class="spinner-grow text-" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                    <div class="spinner-grow text-" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                    <div class="spinner-grow text-" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </div>
             
-                <div class="table-responsive">
-                    <table class="table table-cards align-items-center">
+                <div class="table-responsive" v-if="orders">
+                    <table class="table table-cards align-items-center table-striped table-hover">
                         <thead>
                             <tr>
                                 <th scope="col">No</th>
-                                <th scope="col">ID</th>
+                                <th scope="col">Actions</th>
+                                <th scope="col">Status</th>
                                 <th scope="col">Customer</th>
                                 <th scope="col">Email Address</th>
-                                <th scope="col">Phone Number</th>
-                                <th scope="col">Crypto Info</th>
+                                <th scope="col">Digital Asset</th>
+                                <th scope="col">Bank Details</th>
+                                <th scope="col">Holder Name</th>
                                 <th scope="col">Date</th>
-                                <th scope="col">Status</th>
-                                <th scope="col" class="text-right">Actions</th>
                             </tr>
                         </thead>
+
                         <tbody class="list">
-                            <tr>
-                                <td class="">1</td>
-                                <td class="">SteQW3437</td>
-                                <td class="">Lystun Test</td>
-                                <td class="">lystuntest@gmail.com</td>
-                                <td class="">01234567890</td>
-                                <td class="">ETH - $3,000</td>
-                                <td class="">5 days ago</td>
-                                <td class=""><span class="badge badge-success"> Success </span></td>
-                                <td class="text-right">
-                                    <div class="actions ml-3">
-                                        <nuxt-link :to="{ name: 'admin-orders-sell-id', params: { id: 'Stebt6yghd' } }" class="btn edit mr-2" data-toggle="tooltip" title="Edit">
+                            <tr v-for="(order, index) in orders" :key="index">
+                                <td class="">{{ index+1 }}</td>
+                                <td class="">
+                                    <div class="actions">
+                                        <nuxt-link :to="{ name: 'admin-orders-sell-id', params: { id: order._id } }" class="btn edit mr-2" data-toggle="tooltip" title="Edit">
                                             <span class="fas fa-eye"></span>
-                                        </nuxt-link>
-                                        <nuxt-link to="/" class="btn del mr-2" data-toggle="tooltip" title="Move to trash">
-                                            <i class="fas fa-trash"></i>
                                         </nuxt-link>
                                     </div>
                                 </td>
-                            </tr>
-                            <tr class="table-divider"></tr>
-                            <tr>
-                                <td class="">2</td>
-                                <td class="">SteQW3437</td>
-                                <td class="">Lystun Test</td>
-                                <td class="">lystuntest@gmail.com</td>
-                                <td class="">01234567890</td>
-                                <td class="">BTC - $3,000</td>
-                                <td class="">3 days ago</td>
-                                <td class=""><span class="badge badge-danger"> New </span></td>
-                                <td class="text-right">
-                                    <div class="actions ml-3">
-                                        <nuxt-link to="/" class="btn edit mr-2" data-toggle="tooltip" title="Edit">
-                                            <span class="fas fa-eye"></span>
-                                        </nuxt-link>
-                                        <nuxt-link to="/" class="btn del mr-2" data-toggle="tooltip" title="Move to trash">
-                                            <i class="fas fa-trash"></i>
-                                        </nuxt-link>
-                                    </div>
+                                <td class="">
+                                    <span class="badge badge-success" v-if="order.status"> Completed </span>
+                                    <span class="badge badge-warning" v-else> Pending </span>
                                 </td>
+                                <td class="">{{ order.name }}</td>
+                                <td class="">{{ order.email }}</td>
+                                <td class="">{{ order.digitalAsset }} -  {{ order.amountSent | dollarSymbol }} </td>
+                                <td class="">{{ order.bankName }} -  {{ order.bankAccountNumber }} </td>
+                                <td class="">{{ order.bankAccountName }}</td>
+                                <td class="">{{ order.createdAt }}</td>
                             </tr>
                             <tr class="table-divider"></tr>
                         </tbody>
@@ -73,8 +65,48 @@
 </template>
 
 <script>
+    import { mapGetters } from "vuex";
+
     export default {
         layout: 'admin',
+
+        computed: {
+            ...mapGetters({
+                orders : 'orders/getSellOrders',
+            })
+        },
+
+        filters:{
+            uppercase(value) {
+                if (!value) return ''
+                value = value.toString()
+                return value.toUpperCase()
+            },
+
+            dollarSymbol(value){
+                if (!value) return ''
+                return '$'+value;
+
+            }
+        },
+
+        created(){
+            this.checkData()
+        },
+
+        methods : {
+
+            checkData(){
+                if(!this.orders){
+                    this.getOrders();
+                }
+            },
+
+            async getOrders(){
+                const res = await this.$axios.$get('/transactions')
+                this.$store.dispatch("orders/setSellOrders", res.data)
+            }
+        }
         
     }
 </script>

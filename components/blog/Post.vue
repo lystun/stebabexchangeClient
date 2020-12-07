@@ -6,10 +6,10 @@
                     <img alt="about the new places" class="img-fluid rounded shadow" src="~/assets/img/theme/light/img-1-800x600.jpg">
 
                     <div class="pt-4 text-muted">
-                        <small class="text-uppercase">Oct 15, 2019</small>
-                        <h5>Just a title</h5>
-                        <h5>{{ posts[index].title }} </h5>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum sapiente, quisquam repellendus vero sunt ea culpa adipisci laboriosam reprehenderit velit repellat aliquid porro, delectus omnis voluptas non maiores. Error, neque?</p>
+                        <h5>Test Title</h5>
+                        <!-- <small class="text-uppercase">{{ posts.createdAt }}</small> -->
+                        <!-- <h5>{{ posts.title }} </h5> -->
+                        <!-- <p>{{ posts.content }}</p> -->
                     </div>
                 </nuxt-link>
             </div>
@@ -22,16 +22,10 @@
 
         props: {
             posts: Array,
-            index : Number,
-        },
-
-        data(){
-            return {
-                // index: 1
-            }
         },
 
         mounted(){
+            
         },
     }
 </script>

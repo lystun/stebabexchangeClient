@@ -10,25 +10,35 @@
         <section class="slice-sm">
             <div class="container">
                 <div class="row">
-                    <Post v-for="(post, index) in posts" :key="index" :index="index" :posts="posts" />
-                    <!-- <div class="col-lg-4 col-md-6">
+                    <div class="col-md-12 text-center justify-content-center my-5" v-if="!posts">
+                        <div class="spinner-grow text-" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                        <div class="spinner-grow text-" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                        <div class="spinner-grow text-" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6" v-for="(post, index) in posts" :key="index">
                         <div class="mb-5 mb-lg-0" data-animate-hover="1">
                             <div class="animate-this p-3">
-                                <nuxt-link to="/">
-                                    <img alt="Image placeholder" class="img-fluid rounded shadow" src="~/assets/img/theme/light/img-8-800x600.jpg">
-
+                                <nuxt-link :to="{ name: 'blog-slug', params: { slug: post.slug } }">
+                                    <img :alt="post.title" :src="post.photo" class="img-fluid rounded shadow" >
                                     <div class="pt-4 text-muted">
-                                        <small class="text-uppercase">Oct 15, 2019</small>
-                                        <h5><h5>Listen to the nature</h5></h5>
-                                        <p class="mt-3">When we strive to become better than we are, everything around us becomes better, too.</p>
+                                        <small class="text-uppercase">{{ post.createdAt }} </small>
+                                        <h5>{{ post.title }}</h5>
+                                        <p class="mt-3">{{ post.content }} </p>
                                     </div>
                                 </nuxt-link>
                             </div>
                         </div>
-                    </div> -->
+                    </div>
                 </div>
 
-                <div class="row">
+                <!-- <div class="row">
                     <div class="col-md-12  mt-5">
                         <nav class="">
                             <ul class="pagination justify-content-end">
@@ -48,45 +58,54 @@
                     </div>
 
                     
-                </div>
+                </div> -->
             </div>
         </section>
     </div>
 </template>
 
 <script>
-    import Post from '@/components/blog/Post';
-    import {mapGetters} from 'vuex'
+    
+    import { mapGetters } from "vuex";
 
     export default {
         transitions: 'fade',
+
         head(){
             return{
                 title: "Stebab Exchange | Blog Posts"
             }
         },
 
-        components : {
-            Post
-        },
-
         data(){
             return{
-                // posts: {}
+
             }
         },
 
         computed:{
-            ...mapGetters([
-                'posts'
-            ]),
+            ...mapGetters({
+                posts: 'posts/getPosts',
+            })
         },
 
-        async asyncData({$axios, store}) {
-            const res = await $axios.$get('https://jsonplaceholder.typicode.com/posts');
-            // return ({ posts: res });
-            store.dispatch('setPosts', res)
+        created(){
+            this.checkPosts();
         },
+
+        methods: {
+            async getPosts(){
+                let { data } = await this.$axios.$get('/posts')
+                this.$store.dispatch('posts/setPosts', data)
+            },
+
+            checkPosts(){
+                if(!this.posts){
+                    this.getPosts();
+                }
+            },
+        },
+
     }
 </script>
 

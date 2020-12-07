@@ -7,7 +7,7 @@
             <div class="pt-7 position-absolute middle right-0 col-lg-7 col-xl-6 d-none d-lg-block">
                 <figure class="w-100" style="max-width: 1000px;">
                     <!-- <img alt="Stebab exchange cryptocurrency" src="~/assets/img/svg/illustrations/stebab.svg" class="svg-inject img-fluid" style="height: 1000px;"> -->
-                    <img alt="Stebab exchange cryptocurrency" src="~/assets/img/svg/illustrations/work-chat.svg" class="svg-inject img-fluid" style="height: 1000px;">
+                    <img alt="Stebab exchange cryptocurrency" src="~/assets/img/svg/illustrations/stebab.svg" class="svg-inject img-fluid" style="height: 1000px;">
                 </figure>
             </div>
             <!-- SVG background -->
@@ -49,7 +49,7 @@
         </section>
 
         <!-- Our offers -->
-        <section class="slice slice-lg">
+        <section class="slice slice-xl">
             <div class="container">
                 <div class="row">
                     <div class="col-12 mb-5 text-center">
@@ -114,7 +114,7 @@
             </div>
             <div class="container position-relative zindex-100">
                 <div class="row justify-content-center text-center">
-                    <div class="col-lg-8 col-md-8">
+                    <div class="col-lg-8 col-md-12">
                         <p class="lead text-white">
                             At Stebab Exchange we have successfully completed thousands of transactions over the years and are regarded as a leading cryptocurrency expert.
                             <br> <br>
@@ -166,7 +166,7 @@
         </section>
 
         <!-- Current Prices -->
-        <section class="slice slice-lg" id="prices">
+        <section class="slice slice-xl" id="prices">
             <div class="container prices">
                 <curent-prices></curent-prices>
             </div>
@@ -178,55 +178,22 @@
                 <div class="mb-5 text-center">
                     <h3 class=" mt-4">What our customers say</h3>
                     <div class="fluid-paragraph mt-3">
-                        <p class="lead lh-180">Always looking for better ways to transact and help you trade your digital assets with ease.</p>
+                        <p class="lead lh-180">We are always looking for better ways to transact and help you trade your digital assets with ease.</p>
                     </div>
                 </div>
                 <div class="row justify-content-center">
-                    <div class="col-md-6 col-lg-4">
+                    <div class="col-md-6 col-lg-4" v-for="(testimonial, index) in testimonials" :key="index">
                         <div class="card">
                             <div class="card-body">
                                 <div class="d-flex align-items-center">
                                     <div>
-                                        <img alt="" src="~/assets/img/theme/light/team-1-800x800.jpg" class="avatar  rounded-circle">
+                                        <img alt="" :src="testimonial.photo" class="avatar  rounded-circle">
                                     </div>
                                     <div class="pl-3">
-                                        <h5 class="h6 mb-0">Lystun</h5>
+                                        <h5 class="h6 mb-0">{{testimonial.name}}</h5>
                                     </div>
                                 </div>
-                                <p class="mt-4 lh-180">Trusty lorem jkfif hfjff jfjfvdj  jkcvhihvd  hddjand veritable dealer. Pays promptly and always has capacity for more purchases</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="d-flex align-items-center">
-                                    <div>
-                                        <img alt="" src="~/assets/img/theme/light/team-2-800x800.jpg" class="avatar  rounded-circle">
-                                    </div>
-                                    <div class="pl-3">
-                                        <h5 class="h6 mb-0">Lance</h5>
-                                    </div>
-                                </div>
-                                <p class="mt-4 lh-180">
-                                    Trusty and veritable dealer. Pays promptly and always has capacity for more purchases.
-                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatum enim sunt maxime at reprehenderit perferendis magni officiis neque? Inventore perferendis qui sit impedit similique, expedita dicta fuga! Magni, veritatis sequi!
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="d-flex align-items-center">
-                                    <div>
-                                        <img alt="Image placeholder" src="~/assets/img/theme/light/team-3-800x800.jpg" class="avatar  rounded-circle">
-                                    </div>
-                                    <div class="pl-3">
-                                        <h5 class="h6 mb-0">Stephen Aluko</h5>
-                                    </div>
-                                </div>
-                                <p class="mt-4 lh-180">Trusty and veritable dealer. Pays promptly and always has capacity for more purchases</p>
+                                <p class="mt-4 lh-180">{{testimonial.testimony}} </p>
                             </div>
                         </div>
                     </div>
@@ -241,47 +208,19 @@
                    <h3 class=" mt-4">Market tips from our blog</h3>
                 </div>
                 <div class="row">
-                    <div class="col-lg-4 col-md-6">
+                    <div class="col-lg-4 col-md-6" v-for="(post, index) in posts" :key="index">
                         <div class="mb-5 mb-lg-0" data-animate-hover="1">
                             <div class="animate-this p-3">
                                 <nuxt-link to="/">
-                                    <img alt="Image placeholder" class="img-fluid rounded shadow" src="~/assets/img/theme/light/img-1-800x600.jpg">
+                                    <img alt="Image placeholder" :src="post.photo" class="img-fluid rounded shadow" >
 
                                     <div class="pt-4 text-muted">
-                                        <small class="text-uppercase">Nov 20, 2020</small>
-                                        <h5>Bitcoin Rising</h5>
-                                        <p class="mt-3">When we strive to become better than we are, everything around us becomes better, too.</p>
+                                        <small class="text-uppercase">{{post.createdAt}}</small>
+                                        <h5>{{post.title}} </h5>
+                                        <p class="mt-3">{{ post.content }} </p>
                                     </div>
                                 </nuxt-link>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="mb-5 mb-lg-0" data-animate-hover="1">
-                        <div class="animate-this">
-                            <a href="#">
-                            <img alt="Image placeholder" class="img-fluid rounded shadow" src="~/assets/img/theme/light/img-2-800x600.jpg">
-                            </a>
-                        </div>
-                        <div class="pt-4">
-                            <small class="text-uppercase">Nov 20, 2020</small>
-                            <h5>Cryptocurrency in west Africa</h5>
-                            <p class="mt-3">When we strive to become better than we are, everything around us becomes better, too.</p>
-                        </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div data-animate-hover="1">
-                        <div class="animate-this">
-                            <a href="#">
-                            <img alt="Image placeholder" class="img-fluid rounded shadow" src="~/assets/img/theme/light/img-3-800x600.jpg">
-                            </a>
-                        </div>
-                        <div class="pt-4">
-                            <small class="text-uppercase">Nov 19, 2020</small>
-                            <h5>Rules not to follow</h5>
-                            <p class="mt-3">When we strive to become better than we are, everything around us becomes better, too.</p>
-                        </div>
                         </div>
                     </div>
                 </div>
@@ -309,6 +248,8 @@
 
         transitions: 'fade',
 
+        middleware: ['auth'],
+
         data(){
             return {
                 offers: ['offer the best rate.','settle payment swiftly.', 'trade with integrity.', 'are available 365/24.'],
@@ -317,20 +258,23 @@
 
         components: {
             CurentPrices,
-        },
-
-        created(){
-
-        },
-
-        mounted(){
-            this.$nextTick(() => {
-                this.$nuxt.$loading.start()
-                setTimeout(() => this.$nuxt.$loading.finish(), 500)
-            })
         }, 
 
         methods: {
+
+        },
+
+        async asyncData({$axios}) {
+            let testimonials = await $axios.$get('/testimonials/random-testimonials')
+            let posts = await $axios.$get('/posts/latest-posts')
+
+            console.log(testimonials);
+            console.log(posts);
+
+            return {
+                testimonials: testimonials.data.testimonials,
+                posts: posts.data.latestPosts,
+            }
 
         }
 

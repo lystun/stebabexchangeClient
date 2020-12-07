@@ -11,7 +11,10 @@
                     <div class="">
                         <ul class="navbar-nav align-items-lg-center ml-lg-auto">
                             <li class="nav-item mr-0 ">
-                                <nuxt-link to="/" target="_blank" class="btn btn-sm btn-white d-lg-inline-flex">
+                                <a @click="logout" target="_blank" class="btn btn-sm btn-white logout d-lg-inline-flex">
+                                    <span class="btn-inner--text">Logout</span>
+                                </a>
+                                <nuxt-link to="/" target="_blank" class="btn btn-sm btn-white visit d-lg-inline-flex">
                                     <span class="btn-inner--text">Visit Site</span>
                                 </nuxt-link>
                             </li>
@@ -28,7 +31,9 @@
                         <div class=" col-lg-12">
                             <div class="row align-items-center mb-4">
                                 <div class="col-md-5 mb-4 mb-md-0">
-                                    <span class="h2 mb-0 text-white d-block">Morning, Lystun</span>
+                                    <!-- <span class="h2 mb-0 text-white d-block" v-if="this.$auth.user">{{ greetings+', '+this.$auth.user.me.name }} </span> -->
+                                    <!-- <span class="h2 mb-0 text-white d-block" v-if="isAuthenticated" >{{ greetings+', '+ loggedInUser.me.name }} </span> -->
+                                    <span class="h2 mb-0 text-white d-block" >Good {{ greetings }} </span>
                                     <span class="text-white">Have a nice day!</span>
                                 </div>
                             </div>
@@ -42,7 +47,7 @@
                                     <div class="btn-group" role="group">
                                         <nuxt-link to="/admin/cryptos" id="btn-group-settings" type="button" class="btn btn-neutral btn-icon nuxt-link-active exact">
                                             <span class="btn-inner--icon"><i class="fas fa-coins"></i></span>
-                                            <span class="btn-inner--text d-none d-sm-inline-block">Crypto</span>
+                                            <span class="btn-inner--text d-none d-sm-inline-block">Cryptos</span>
                                         </nuxt-link>
                                     </div>
                                     <div class="btn-group" role="group">
@@ -122,12 +127,71 @@
 </template>
 
 <script>
-export default {
 
-}
+    import {mapGetters} from 'vuex'
+
+    export default {
+    
+        middleware: ['admin'],
+
+        data(){
+            return {
+                user: null,
+                greetings: ''
+            }
+        },
+
+        computed:{
+            ...mapGetters([
+                'loggedInUser',
+                'isAuthenticated'  
+            ])
+        },
+
+        created(){
+            this.checkDay()
+            this.$nuxt.refresh()
+        },
+
+        methods: {
+            checkDay(){
+
+                let hour = new Date().getHours();
+
+                if(hour < 12){
+                    this.greetings = 'Morning'
+                }else if(hour > 12 && hour < 18){
+                    this.greetings = 'Afternoon';
+                }else{
+                    this.greetings = 'Evening'
+                }
+
+            },
+
+            logout(){
+                this.$auth.logout()
+                this.$router.push({name: 'index'})
+
+                this.$toast.success('Successfully logged out', {
+                    icon : 'check',
+                    duration: 5000,
+                })
+            }
+        },
+
+
+    }
 </script>
 
 <style lang="scss" scoped>
+
+    .header {
+        .navbar-nav {
+            .logout {
+                background: gray;
+            }
+        }
+    }
 
     .navigation {
 

@@ -30,6 +30,11 @@
                                 <span class="btn-inner--text">Sell Crypto</span>
                             </nuxt-link>
                         </li>
+                        <!-- <li class="nav-item mr-0 ">
+                            <nuxt-link to="/auth/login" class="btn btn-sm btn-white d-none d-lg-inline-flex">
+                                <span class="btn-inner--text">Login</span>
+                            </nuxt-link>
+                        </li> -->
                     </ul>
                 </div>
             </div>
