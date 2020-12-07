@@ -22,7 +22,7 @@ export default {
             
             { src: "/js/purpose.core.js" },
             // { src: "/libs/swiper/dist/js/swiper.js" },
-            { src: "/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.js" },
+            // { src: "/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.js" },
             { src: "/js/purpose.js" },
         ]
     },
@@ -31,7 +31,7 @@ export default {
     css: [
         '~/assets/libs/@fortawesome/fontawesome-free/css/all.min.css',
         // '~/assets/libs/swiper/dist/css/swiper.min.css',
-        '~/assets/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.css',
+        // '~/assets/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.css',
         '~/assets/css/purpose-blue-light.css',
         '~/assets/css/main.css',
     ],
