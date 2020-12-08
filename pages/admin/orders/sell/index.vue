@@ -50,10 +50,10 @@
                                 </td>
                                 <td class="">{{ order.name }}</td>
                                 <td class="">{{ order.email }}</td>
-                                <td class="">{{ order.digitalAsset }} -  {{ order.amountSent | dollarSymbol }} </td>
+                                <td class="">{{ order.digitalAsset }} -  {{ order.amountSent | formatMoney }} </td>
                                 <td class="">{{ order.bankName }} -  {{ order.bankAccountNumber }} </td>
                                 <td class="">{{ order.bankAccountName }}</td>
-                                <td class="">{{ order.createdAt }}</td>
+                                <td class="">{{ order.createdAt | formatDate }}</td>
                             </tr>
                             <tr class="table-divider"></tr>
                         </tbody>
@@ -83,10 +83,13 @@
                 return value.toUpperCase()
             },
 
-            dollarSymbol(value){
-                if (!value) return ''
-                return '$'+value;
+            formatDate(value){
+                return new Date(value).toUTCString()
+            },
 
+            formatMoney(value){
+                return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' })
+                .format(value); // '$100.00'
             }
         },
 

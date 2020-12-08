@@ -139,7 +139,7 @@
                             <div class="icon icon-lg text-white">
                                 <i class="fas fa-money-bill-wave"></i>
                             </div>
-                            <span class="d-block mt-4 h3 text-white">45,000,000</span>
+                            <span class="d-block mt-4 h3 text-white">$4,000,000</span>
                             <span class="d-block mt-2 h6 text-white">Amount Traded</span>
                         </div>
                     </div>
@@ -168,7 +168,8 @@
         <!-- Current Prices -->
         <section class="slice slice-xl" id="prices">
             <div class="container prices">
-                <curent-prices></curent-prices>
+                <CurentPrices :cryptoData="cryptoData" />
+                <!-- <curent-prices></curent-prices> -->
             </div>
         </section>
         
@@ -211,11 +212,11 @@
                     <div class="col-lg-4 col-md-6" v-for="(post, index) in posts" :key="index">
                         <div class="mb-5 mb-lg-0" data-animate-hover="1">
                             <div class="animate-this p-3">
-                                <nuxt-link to="/">
+                                <nuxt-link :to="{ name: 'blog-slug', params: { slug: post.slug } }">
                                     <img alt="Image placeholder" :src="post.photo" class="img-fluid rounded shadow" >
 
                                     <div class="pt-4 text-muted">
-                                        <small class="text-uppercase">{{post.createdAt}}</small>
+                                        <small class="text-uppercase">{{ post.createdAt | formatDate }}</small>
                                         <h5>{{post.title}} </h5>
                                         <p class="mt-3">{{ post.content }} </p>
                                     </div>
@@ -252,7 +253,14 @@
 
         data(){
             return {
+                cryptoData : {},
                 offers: ['offer the best rate.','settle payment swiftly.', 'trade with integrity.', 'are available 365/24.'],
+            }
+        },
+
+        filters : {
+            formatDate(value){
+                return new Date(value).toDateString()
             }
         },
 
@@ -260,23 +268,28 @@
             CurentPrices,
         }, 
 
-        methods: {
+        created(){
+            this.getCryptoData()
+        },  
 
+        methods: {
+            async getCryptoData(){
+                const {data} = await this.$axios.$get('/coins/crypto-data')
+                this.cryptoData = data
+            }
         },
 
         async asyncData({$axios}) {
             let testimonials = await $axios.$get('/testimonials/random-testimonials')
             let posts = await $axios.$get('/posts/latest-posts')
 
-            console.log(testimonials);
-            console.log(posts);
-
             return {
                 testimonials: testimonials.data.testimonials,
                 posts: posts.data.latestPosts,
             }
+        },
 
-        }
+        
 
     }
 

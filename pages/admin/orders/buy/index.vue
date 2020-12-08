@@ -53,11 +53,11 @@
                                 <td class="">{{ order.name }}</td>
                                 <td class="">{{ order.email }}</td>
                                 <td class="">{{ order.qtyNeeded }} - {{ order.digitalAsset }} </td>
-                                <td class="">{{ order.rate | dollarSymbol }}</td>
-                                <td class="">{{ order.amountPaid | dollarSymbol }}</td>
+                                <td class="">{{ order.rate | formatMoney }}</td>
+                                <td class="">{{ order.amountPaid | formatMoney }}</td>
                                 <td class="">{{ order.walletAddress }}</td>
                                 <td class="">{{ order.bankName }} -  {{ order.bankAccountName }} </td>
-                                <td class="">{{ order.createdAt }}</td>
+                                <td class="">{{ order.createdAt | formatDate }}</td>
                             </tr>
                             <tr class="table-divider"></tr>
                         </tbody>
@@ -87,10 +87,13 @@
                 return value.toUpperCase()
             },
 
-            dollarSymbol(value){
-                if (!value) return ''
-                return '$'+value;
+            formatDate(value){
+                return new Date(value).toUTCString()
+            },
 
+            formatMoney(value){
+                return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' })
+                .format(value); // '$100.00'
             }
         },
 

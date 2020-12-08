@@ -21,17 +21,14 @@ export default {
             { src: "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js", },
             
             { src: "/js/purpose.core.js" },
-            // { src: "/libs/swiper/dist/js/swiper.js" },
-            // { src: "/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.js" },
             { src: "/js/purpose.js" },
+            { src: "//code.tidio.co/kycjkhks0cvwqmk6ltankrczldejgzuj.js" },
         ]
     },
 
     // Global CSS (https://go.nuxtjs.dev/config-css)
     css: [
         '~/assets/libs/@fortawesome/fontawesome-free/css/all.min.css',
-        // '~/assets/libs/swiper/dist/css/swiper.min.css',
-        // '~/assets/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.css',
         '~/assets/css/purpose-blue-light.css',
         '~/assets/css/main.css',
     ],
@@ -47,6 +44,7 @@ export default {
         { src: '~/plugins/vue-typed.js' },
         { src: '~/plugins/v-clipboard.js' },
         { src: '~/plugins/axios.js' },
+        { src: '~/plugins/disqus.js' },
         { src: '~/plugins/mixins/user.js' },
         { src: '~/plugins/mixins/validation.js' },
     ],
@@ -71,8 +69,8 @@ export default {
                 confirmButtonColor : '#f72585',
                 cancelButtonColor : '#273344',
             }
-        
         ],
+        
     ],
 
     // Axios module configuration (https://go.nuxtjs.dev/config-axios)

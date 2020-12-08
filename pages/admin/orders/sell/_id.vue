@@ -32,7 +32,7 @@
                         <p>Name: {{ order.name }} </p>
                         <p>Email Address: {{ order.email }} </p>
                         <p>Phone Number: {{ order.phoneNumber }} </p>
-                        <p>Amount Sent: ${{ order.amountSent }} </p>
+                        <p>Amount Sent: ${{ order.amountSent | formatMoney }} </p>
                         <p>Digital Asset: ${{ order.digitalAsset }} </p>
                         <p>Country: {{ order.country }}</p>
                         <p>State: {{ order.state }} </p>
@@ -54,6 +54,13 @@
         data(){
             return {
                 order: {},
+            }
+        },
+
+        filters: {
+            formatMoney(value){
+                return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' })
+                .format(value); // '$100.00'
             }
         },
 

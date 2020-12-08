@@ -38,7 +38,7 @@
                                 </td>
                                 <td class="">{{ post.title }}</td>
                                 <td class="">{{ post.author }}</td>
-                                <td class="">{{ post.createdAt }}</td>
+                                <td class="">{{ post.createdAt | formatDate }}</td>
                                 <td class="text-">
                                     <div class="actions">
                                         <nuxt-link :to="{ name: 'admin-posts-id', params:{ id: post._id } }" class="btn edit mr-2" data-toggle="tooltip" title="Edit">
@@ -78,10 +78,9 @@
                 return value.toUpperCase()
             },
 
-            dollarSymbol(value){
-                if (!value) return ''
-                return '$'+value;
-            }
+            formatDate(value){
+                return new Date(value).toDateString()
+            },
         },
 
         created(){

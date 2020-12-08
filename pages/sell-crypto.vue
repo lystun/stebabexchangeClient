@@ -80,7 +80,7 @@
                                                 </div>
                                             </div>
                                         </th>
-                                        <td>{{ crypto.tradeAmount | dollarSymbol }} USD</td>
+                                        <td>{{ crypto.tradeAmount | formatMoney }} USD</td>
                                         <td>$1 = ₦{{ crypto.exchangeRate }}</td>
                                         <td class="">
                                             <div class="actions info">
@@ -342,6 +342,11 @@
             dollarSymbol(value){
                 if (!value) return ''
                 return '$'+value;
+            },
+
+            formatMoney(value){
+                return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' })
+                .format(value); // '$100.00'
             }
         },
 
@@ -368,7 +373,7 @@
                     this.imageErr = ''
 
                     if(photo.type.startsWith('image')){
-                        if (photo['size'] < 500000 ){
+                        if (photo['size'] < 1000000 ){
                             let reader = new FileReader();
 
                             reader.onloadend = (photo) => {

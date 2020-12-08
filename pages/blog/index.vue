@@ -28,7 +28,7 @@
                                 <nuxt-link :to="{ name: 'blog-slug', params: { slug: post.slug } }">
                                     <img :alt="post.title" :src="post.photo" class="img-fluid rounded shadow" >
                                     <div class="pt-4 text-muted">
-                                        <small class="text-uppercase">{{ post.createdAt }} </small>
+                                        <small class="text-uppercase">{{ post.createdAt | formatDate }} </small>
                                         <h5>{{ post.title }}</h5>
                                         <p class="mt-3">{{ post.content }} </p>
                                     </div>
@@ -80,6 +80,12 @@
         data(){
             return{
 
+            }
+        },
+
+        filters : {
+            formatDate(value){
+                return new Date(value).toDateString()
             }
         },
 

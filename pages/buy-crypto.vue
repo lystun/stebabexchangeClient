@@ -11,16 +11,14 @@
         <section class="slice buy__process">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-5 buy__process--steps">
+                    <div class="col-lg-10 buy__process--steps">
                         <div class="delimiter-top">
-                            <!-- Title -->
                             <h6 class="mb-5"> <i class="fas fa-list mr-2"></i>Buy your Cryptocurrencies in 4 easy steps </h6>
-                            <!-- Timeline -->
                             <div class="timeline timeline-one-side" data-timeline-content="axis">
                                 <div class="timeline-block">
                                     <span class="timeline-step border-danger">1</span>
                                     <div class="timeline-content">
-                                        <h6 class="pt-2">Transfer Crypto</h6>
+                                        <h6 class="pt-2">Indicate Quantity Needed</h6>
                                         <p class="text-sm lh-160">
                                             Copy the specific wallet address provided for the Cryptcurrency you'd like to buy and transfer your asset from your wallet
                                         </p>
@@ -29,27 +27,19 @@
                                 <div class="timeline-block">
                                     <span class="timeline-step timeline-step border-warning">2</span>
                                     <div class="timeline-content">
-                                        <h6 class="pt-2">Fill the Transaction Form</h6>
+                                        <h6 class="pt-2">Step 2</h6>
                                         <p class="text-sm lh-160">
-                                            Upon successful transfer of coin, proceed to fill the transaction form below and upload the screenshot detailing the transfer transaction.</p>
+                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas ex, soluta voluptates ullam adipisci cumque consectetur iure incidunt impedit id omnis ducimus, saepe nobis cum. Eos consequuntur aspernatur quaerat impedit!
+                                        </p>
                                         <p class="text-sm lh-160"></p>
                                     </div>
                                 </div>
                                 <div class="timeline-block">
                                     <span class="timeline-step timeline-step border-primary">3</span>
                                     <div class="timeline-content">
-                                        <h6 class="pt-2">We confirm coin receipt</h6>
+                                        <h6 class="pt-2">Step 3</h6>
                                         <p class="text-sm lh-160">
-                                            Confirmation email would be sent to confirm receipt of coins after at least one confirmation on blockchain.
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="timeline-block">
-                                    <span class="timeline-step timeline-step border-success">4</span>
-                                    <div class="timeline-content">
-                                        <h6 class="pt-2">Acknowledge Payment</h6>
-                                        <p class="text-sm lh-160">
-                                            Acknowledge receipt of payment as buyer's account would be credited in minutes after coin has been received and confirmed.
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum maiores suscipit impedit. Totam aut iste velit praesentium blanditiis voluptatum aspernatur qui omnis hic suscipit. Officia quasi repellat quam perferendis sint.
                                         </p>
                                     </div>
                                 </div>
@@ -57,7 +47,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-7 buy__process--info">
+                    <!-- <div class="col-lg-7 buy__process--info">
                         <div class="table-responsive">
                             <table class="table table-cards align-items-center text-dark">
                                 <thead>
@@ -103,7 +93,7 @@
                                 </tbody>
                             </table>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </section>
@@ -377,7 +367,7 @@
                     this.imageErr = ''
 
                     if(photo.type.startsWith('image')){
-                        if (photo['size'] < 500000 ){
+                        if (photo['size'] < 1000000 ){
                             let reader = new FileReader();
 
                             reader.onloadend = (photo) => {
@@ -415,7 +405,7 @@
                     this.$swal.fire({
                         type: 'success',
                         title: 'Thank you!',
-                        text: 'Order submitted successfully. We\'ll respond shortly',
+                        text: 'Order submitted successfully. We\'ll respond shortly.',
                     })
 
                     this.$toast.success("Order Submited Successfully", {

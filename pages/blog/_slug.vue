@@ -11,7 +11,7 @@
                     </div> -->
                     <div class="text-left">
                         <span class="d-block h6 mb-0 text-white">{{ post.author }} </span>
-                        <span class="text-sm text-white"> {{ post.createdAt }} </span>
+                        <span class="text-sm text-white"> {{ post.createdAt | formatDate }} </span>
                     </div>
                 </div>
             </div>
@@ -36,7 +36,11 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-
+                        <div class="my-5">
+                            <Disqus :identifier="this.$route.path" />
+                        </div>
+                        <!-- <div id="disqus_thread" class="my-5"></div> -->
+                        <!-- <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">Stebab Exchange Comment Section.</a></noscript> -->
                     </div>
                 </div>
             </div>
@@ -59,6 +63,16 @@ export default {
         this.post
     },
 
+    filters : {
+        formatDate(value){
+            return new Date(value).toDateString()
+        },
+    },
+
+    mounted(){
+
+    },
+
     async asyncData({$axios, params}){
         const {data} = await $axios.$get(`/posts/slug/${params.slug}`)
 
@@ -66,6 +80,29 @@ export default {
             post : data.post[0]
         }
     },
+
+    methods : {
+        
+        disquso(){
+            if(process.client){
+                var disqus_config = function () {
+                    this.page.url = 'https://stebabexchange.com/blog/';  // Replace PAGE_URL with your page's canonical URL variable
+                    this.page.identifier = this.$route.params.slug; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                };
+            
+            
+                (function() { // DON'T EDIT BELOW THIS LINE
+                    if(process.client){
+                        var d = document, s = d.createElement('script');
+                        s.src = 'https://stebab-exchange.disqus.com/embed.js';
+                        s.setAttribute('data-timestamp', +new Date());
+                        (d.head || d.body).appendChild(s);
+                    }
+                })();
+            }
+        },
+
+    }
 
 }
 </script>
