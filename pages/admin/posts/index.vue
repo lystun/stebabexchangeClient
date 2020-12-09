@@ -88,15 +88,15 @@
         },
 
         methods: {
-            async getPosts(){
-                let { data } = await this.$axios.$get('/posts')
-                this.$store.dispatch('posts/setPosts', data)
-            },
-
             checkPosts(){
                 if(!this.posts){
                     this.getPosts();
                 }
+            },
+
+            async getPosts(){
+                let { data } = await this.$axios.$get('/posts')
+                this.$store.dispatch('posts/setPosts', data)
             },
 
             deletePost(id){
