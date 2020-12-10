@@ -28,6 +28,9 @@ export default {
 
     // Global CSS (https://go.nuxtjs.dev/config-css)
     css: [
+        'quill/dist/quill.snow.css',
+        'quill/dist/quill.bubble.css',
+        'quill/dist/quill.core.css',
         '~/assets/libs/@fortawesome/fontawesome-free/css/all.min.css',
         '~/assets/css/purpose-blue-light.css',
         '~/assets/css/main.css',
@@ -45,6 +48,7 @@ export default {
         { src: '~/plugins/v-clipboard.js' },
         { src: '~/plugins/axios.js' },
         { src: '~/plugins/disqus.js' },
+        { src: "~plugins/vue-quill-editor.js", ssr: false },
         { src: '~/plugins/mixins/user.js' },
         { src: '~/plugins/mixins/validation.js' },
     ],

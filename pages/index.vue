@@ -139,7 +139,7 @@
                             <div class="icon icon-lg text-white">
                                 <i class="fas fa-money-bill-wave"></i>
                             </div>
-                            <span class="d-block mt-4 h3 text-white">$4,000,000</span>
+                            <span class="d-block mt-4 h3 text-white">$4m+</span>
                             <span class="d-block mt-2 h6 text-white">Amount Traded</span>
                         </div>
                     </div>
@@ -148,7 +148,7 @@
                             <div class="icon icon-lg text-white">
                                 <i class="fas fa-layer-group"></i>
                             </div>
-                            <span class="d-block mt-4 h2 text-white">990</span>
+                            <span class="d-block mt-4 h2 text-white">5,000+</span>
                             <span class="d-block mt-2 h6 text-white">Transations Completed</span>
                         </div>
                     </div>
@@ -218,7 +218,7 @@
                                     <div class="pt-4 text-muted">
                                         <small class="text-uppercase">{{ post.createdAt | formatDate }}</small>
                                         <h5>{{post.title}} </h5>
-                                        <p class="mt-3">{{ post.content }} </p>
+                                        <p class="mt-3">{{ truncate(post.content) }} </p>
                                     </div>
                                 </nuxt-link>
                             </div>
@@ -273,6 +273,16 @@
         },  
 
         methods: {
+            
+            truncate(post) {
+                let body = this.stripTags(post);
+                return body.length > 120 ? body.substring(0, 120) + '...' : body;           
+            },
+
+            stripTags(text) {
+                return text.replace(/(<([^>]+)>)/ig, '');
+            },
+
             async getCryptoData(){
                 const {data} = await this.$axios.$get('/coins/crypto-data')
                 this.cryptoData = data

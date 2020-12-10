@@ -2,7 +2,7 @@
     <div class="buy">
         <section class="jumbotron buy__header bg-gradient-primary">
             <div class="container text-center">
-                <h1 class="header text-white">Buy Cryptcurrency</h1>
+                <h1 class="header text-white">Buy Cryptocurrency</h1>
                 <p>Place an order for digital assets with our simple and uncluttered process</p>
             </div>
         </section>
@@ -13,23 +13,23 @@
                 <div class="row">
                     <div class="col-lg-10 buy__process--steps">
                         <div class="delimiter-top">
-                            <h6 class="mb-5"> <i class="fas fa-list mr-2"></i>Buy your Cryptocurrencies in 4 easy steps </h6>
+                            <h6 class="mb-5"> <i class="fas fa-list mr-2"></i>Buy your Cryptocurrencies in 3 easy steps </h6>
                             <div class="timeline timeline-one-side" data-timeline-content="axis">
                                 <div class="timeline-block">
                                     <span class="timeline-step border-danger">1</span>
                                     <div class="timeline-content">
-                                        <h6 class="pt-2">Indicate Quantity Needed</h6>
+                                        <h6 class="pt-2">Contact The Support</h6>
                                         <p class="text-sm lh-160">
-                                            Copy the specific wallet address provided for the Cryptcurrency you'd like to buy and transfer your asset from your wallet
+                                            Contact us via live chat or whatsapp to confirm the rate for the asset(s) you’re willing to buy and lock rate with the admin.
                                         </p>
                                     </div>
                                 </div>
                                 <div class="timeline-block">
                                     <span class="timeline-step timeline-step border-warning">2</span>
                                     <div class="timeline-content">
-                                        <h6 class="pt-2">Step 2</h6>
+                                        <h6 class="pt-2">Make Payment</h6>
                                         <p class="text-sm lh-160">
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas ex, soluta voluptates ullam adipisci cumque consectetur iure incidunt impedit id omnis ducimus, saepe nobis cum. Eos consequuntur aspernatur quaerat impedit!
+                                            Make payment ONLY into the STEBABXCHANGE account provided to you by the admin.
                                         </p>
                                         <p class="text-sm lh-160"></p>
                                     </div>
@@ -37,9 +37,9 @@
                                 <div class="timeline-block">
                                     <span class="timeline-step timeline-step border-primary">3</span>
                                     <div class="timeline-content">
-                                        <h6 class="pt-2">Step 3</h6>
+                                        <h6 class="pt-2">Proceed to fill in order Form</h6>
                                         <p class="text-sm lh-160">
-                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum maiores suscipit impedit. Totam aut iste velit praesentium blanditiis voluptatum aspernatur qui omnis hic suscipit. Officia quasi repellat quam perferendis sint.
+                                            Proceed to carefully fill in the order form below.
                                         </p>
                                     </div>
                                 </div>

@@ -2,8 +2,8 @@
     <div class="sell">
         <section class="jumbotron sell__header bg-gradient-primary">
             <div class="container text-center">
-                <h1 class="header text-white">Sell Cryptcurrency</h1>
-                <p>Sell your digital assets with our simple and uncluttered process</p>
+                <h1 class="header text-white">Sell Cryptocurrency</h1>
+                <p>Sell your digital assets with our simple and uncluttered process.</p>
             </div>
         </section>
 
@@ -54,6 +54,8 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <h6 class="text-danger font-weight-bold">N.B: Bulk sellers can chat us up via the live chat or WhatsApp for negotiation.</h6>
                         </div>
                     </div>
 

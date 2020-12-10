@@ -3,7 +3,7 @@
         <section class="jumbotron blog__header bg-gradient-primary">
             <div class="container text-center">
                 <h1 class="header text-white">Blog Posts</h1>
-                <p class="lead">This is to keep our customers informed and abreast of happenings in the crypto world.</p>
+                <p class="lead">To further increase our customer's knowledge, keep you informed and abreast of happenings in the crypto world.</p>
             </div>
         </section>
 
@@ -22,7 +22,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4 col-md-6" v-for="(post, index) in posts" :key="index">
+                    <!-- <div class="col-lg-4 col-md-6" v-for="(post, index) in posts" :key="index">
                         <div class="mb-5 mb-lg-0" data-animate-hover="1">
                             <div class="animate-this p-3">
                                 <nuxt-link :to="{ name: 'blog-slug', params: { slug: post.slug } }">
@@ -30,12 +30,26 @@
                                     <div class="pt-4 text-muted">
                                         <small class="text-uppercase">{{ post.createdAt | formatDate }} </small>
                                         <h5>{{ post.title }}</h5>
-                                        <p class="mt-3">{{ post.content }} </p>
+                                        <p class="mt-3">{{ truncate(post.content) }} </p>
                                     </div>
                                 </nuxt-link>
                             </div>
                         </div>
+                    </div> -->
+
+                    <div class="card-columns">
+                        <div class="card border-0 hover-shadow-lg shadow p-3" v-for="(post, index) in posts" :key="index">
+                            <nuxt-link :to="{ name: 'blog-slug', params: { slug: post.slug } }">
+                                <img :alt="post.title" :src="post.photo" class="img-fluid rounded shadow" >
+                                <div class="pt-4 text-muted">
+                                    <small class="text-uppercase">{{ post.createdAt | formatDate }} </small>
+                                    <h5>{{ post.title }}</h5>
+                                    <p class="mt-3">{{ truncate(post.content) }} </p>
+                                </div>
+                            </nuxt-link>
+                        </div>
                     </div>
+
                 </div>
 
                 <!-- <div class="row">
@@ -109,6 +123,15 @@
                 if(!this.posts){
                     this.getPosts();
                 }
+            },
+
+            truncate(post) {
+                let body = this.stripTags(post);
+                return body.length > 120 ? body.substring(0, 120) + '...' : body;           
+            },
+
+            stripTags(text) {
+                return text.replace(/(<([^>]+)>)/ig, '');
             },
         },
 

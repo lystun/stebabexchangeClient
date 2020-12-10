@@ -20,12 +20,12 @@
         <section class="slice blog__article">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-3 bg-info">
+                    <!-- <div class="col-md-3 bg-info">
                         Share this post
-                    </div>
-                    <div class="col-md-9">
+                    </div> -->
+                    <div class="col-md-9 mx-auto">
                         <article>
-                            <p class="lead"> {{ post.content }} </p>
+                            <p class="lead"> {{ stripTags(post.content) }} </p>
                         </article>
                     </div>
                 </div>
@@ -82,24 +82,13 @@ export default {
     },
 
     methods : {
-        
-        disquso(){
-            if(process.client){
-                var disqus_config = function () {
-                    this.page.url = 'https://stebabexchange.com/blog/';  // Replace PAGE_URL with your page's canonical URL variable
-                    this.page.identifier = this.$route.params.slug; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-                };
-            
-            
-                (function() { // DON'T EDIT BELOW THIS LINE
-                    if(process.client){
-                        var d = document, s = d.createElement('script');
-                        s.src = 'https://stebab-exchange.disqus.com/embed.js';
-                        s.setAttribute('data-timestamp', +new Date());
-                        (d.head || d.body).appendChild(s);
-                    }
-                })();
-            }
+        truncate(post) {
+            let body = this.stripTags(post);
+            return body.length > 120 ? body.substring(0, 120) + '...' : body;           
+        },
+
+        stripTags(text) {
+            return text.replace(/(<([^>]+)>)/ig, '');
         },
 
     }

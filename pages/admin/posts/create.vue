@@ -33,7 +33,11 @@
 
                             <div class="col-md-12 mb-2">
                                 <label for="content">Post Content</label>
-                                <textarea id="content" class="form-control" v-model="form.content"  placeholder="Post Content" rows="10" required></textarea>
+                                <div class="quill-editor" 
+                                    :content="form.content"
+                                    v-quill:myQuillEditor="editorOption"
+                                    @change="onEditorChange($event)" >
+                                </div>
                             </div>
 
                             <div>
@@ -69,6 +73,17 @@
             return {
                 loading: false,
 
+                content: '<p>I am Example</p>',
+                editorOption: {
+                    // some quill options
+                    modules: {
+                        toolbar: [
+                        ['bold', 'italic', 'underline', 'strike'],
+                        ['blockquote', 'code-block']
+                        ]
+                    }
+                },
+
                 form : {
                     title: '',
                     content: '',
@@ -81,8 +96,19 @@
             }
         },
 
+        mounted() {
+            console.log('app init, my quill insrance object is:', this.myQuillEditor)
+            setTimeout(() => {
+                this.content = 'i am changed'
+            }, 3000)
+        },
+
 
         methods: {
+            onEditorChange({ editor, html, text }) {
+                this.form.content = html
+            },
+
             async create(){
                 this.loading = true;
 
@@ -131,7 +157,7 @@
                 }
                 
 
-            }
+            },
         }
         
     }
@@ -140,11 +166,16 @@
 <style lang="scss" scoped>
     .post  {
         
-
         &__form {
             .btn {
                 color: $white;
                 background: $secondary;
+            }
+
+            .quill-editor {
+                min-height: 200px;
+                max-height: 300px;
+                overflow-y: auto;
             }
         }
     }

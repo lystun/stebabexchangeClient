@@ -10,7 +10,7 @@
             <div class="col">
                 <div class="row justify-content-center">
                     <div class="col-lg-7 text-center">
-                        <h6 class="h1 mb-5 font-weight-400 text-white" v-if="error.statusCode">Page not found</h6>
+                        <h6 class="h1 mb-5 font-weight-400 text-white" v-if="error.statusCode">Oops! Something Went Wrong</h6>
                         <h6 class="h1 mb-5 font-weight-400 text-white" v-else>Server Error</h6>
                         <nuxt-link to="/" class="btn btn-white btn-icon rounded-pill hover-translate-y-n3">
                             <span class="btn-inner--icon"><i class="fas fa-home"></i></span>
@@ -29,6 +29,7 @@
         </div>
     </section>
 </template>
+
 
 <script>
     export default {
