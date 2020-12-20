@@ -6,8 +6,7 @@
             <!-- SVG illustration -->
             <div class="pt-7 position-absolute middle right-0 col-lg-7 col-xl-6 d-none d-lg-block">
                 <figure class="w-100" style="max-width: 1000px;">
-                    <!-- <img alt="Stebab exchange cryptocurrency" src="~/assets/img/svg/illustrations/stebab.svg" class="svg-inject img-fluid" style="height: 1000px;"> -->
-                    <img alt="Stebab exchange cryptocurrency" src="~/assets/img/svg/illustrations/stebab.svg" class="svg-inject img-fluid" style="height: 1000px;">
+                    <img alt="Stebab xchange cryptocurrency" src="~/assets/img/svg/illustrations/stebab.svg" class="svg-inject img-fluid" style="height: 1000px;">
                 </figure>
             </div>
             <!-- SVG background -->
@@ -29,7 +28,7 @@
                                     :backSpeed="20"
                                     :loop="true"
                                 >
-                                    <h2 class="h1 text-white mb-1">At Stebab Exchange, <br> We <span class="typing"></span></h2>
+                                    <h2 class="h1 text-white mb-1">At Stebab Xchange, <br> We <span class="typing"></span></h2>
                                 </vue-typed-js>
                             </div>
                             <div class="cta">
@@ -109,14 +108,14 @@
             <!-- SVG background -->
             <div class="bg-absolute-cover bg-size--contain d-flex align-items-center">
                 <figure class="w-100">
-                    <img alt="Stebab Exchange about us" src="~/assets/img/svg/backgrounds/light-texture.svg" class="svg-inject">
+                    <img alt="Stebab Xchange about us" src="~/assets/img/svg/backgrounds/light-texture.svg" class="svg-inject">
                 </figure>
             </div>
             <div class="container position-relative zindex-100">
                 <div class="row justify-content-center text-center">
                     <div class="col-lg-8 col-md-12">
                         <p class="lead text-white">
-                            At Stebab Exchange we have successfully completed thousands of transactions over the years and are regarded as a leading cryptocurrency expert.
+                            At Stebab Xchange we have successfully completed thousands of transactions over the years and are regarded as a leading cryptocurrency expert.
                             <br> <br>
                             We operate to ensure a quick, seamless, and safe transaction of your digital assets.
                        </p>
@@ -237,7 +236,7 @@
     export default {
         head () {
             return {
-                title: 'Stebab Exchange | Buy, Sell all volumes of cryptocurrency at the best market rate',
+                title: 'Stebab Xchange | Buy, Sell all volumes of cryptocurrency at the best market rate',
                 script :[
                     { src: '/libs/swiper/dist/js/swiper.js' },
                 ],

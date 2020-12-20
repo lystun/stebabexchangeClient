@@ -24,8 +24,11 @@
                         Share this post
                     </div> -->
                     <div class="col-md-9 mx-auto">
+                        <section class="image mb-3">
+                            <img :src="post.photo" class="img-fluid" alt="">
+                        </section>
                         <article>
-                            <p class="lead"> {{ stripTags(post.content) }} </p>
+                            <p class="lead text"> {{ stripTags(post.content) }} </p>
                         </article>
                     </div>
                 </div>
@@ -106,6 +109,17 @@ export default {
 
         &__article {
             background: $white;
+
+            .text {
+                
+                font-size: 1.2rem;
+                color: $dark;
+
+                &::first-letter {
+                    font-size: 2rem;
+                    font-weight: bold;
+                }
+            }
         }
     }
 </style>

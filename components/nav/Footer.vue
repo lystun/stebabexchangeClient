@@ -35,7 +35,7 @@
             <div class="row align-items-center justify-content-md-between py-4 mt-4 delimiter-top">
                 <div class="col-md-6">
                     <div class="copyright text-sm font-weight-bold text-center text-md-left">
-                        &copy; {{year}} <nuxt-link to="/" class="font-weight-bold" target="_blank">Stebab Exchange</nuxt-link>. All rights reserved.
+                        &copy; {{year}} <nuxt-link to="/" class="font-weight-bold" target="_blank">Stebab Xchange</nuxt-link>. All rights reserved.
                     </div>
                 </div>
                 <div class="col-md-6">
