@@ -73,7 +73,6 @@
             return {
                 loading: false,
 
-                content: '<p>I am Example</p>',
                 editorOption: {
                     // some quill options
                     modules: {

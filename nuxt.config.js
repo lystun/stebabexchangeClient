@@ -74,13 +74,13 @@ export default {
                 cancelButtonColor : '#273344',
             }
         ],
-        
     ],
 
     // Axios module configuration (https://go.nuxtjs.dev/config-axios)
     axios: {
         baseURL : "https://stebabexchange-api.herokuapp.com/api/v1/",
         // baseURL : "http://127.0.0.1:8080/api/v1",
+
     },
 
     auth: {

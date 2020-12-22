@@ -12,33 +12,33 @@
                             <div class="col-md-12 mb-2">
                                 <div class="form-group">
                                     <label class="form-control-label">Crypto Name</label>
-                                    <input class="form-control" v-model="form.name" :class="{'is-invalid': errors.message }" type="text" placeholder="Crypto Name" required>
+                                    <input class="form-control" v-model="form.name" :class="{'is-invalid': errors.message }" type="text" placeholder="Crypto Name">
                                 </div>
                             </div>
                             <div class="col-md-12 mb-2">
                                 <div class="form-group">
                                     <label class="form-control-label">Crypto Icon</label>
                                     <input class="form-control" 
-                                    @change="uploadImage" :class="{'is-invalid': imageErr }"  type="file" required>
+                                    @change="uploadImage" :class="{'is-invalid': imageErr }"  type="file">
                                     <div class="invalid-feedback">{{ this.imageErr }} </div>
                                 </div>
                             </div>
                             <div class="col-md-12 mb-2">
                                 <div class="form-group">
                                     <label class="form-control-label">Wallet Address</label>
-                                    <input class="form-control" v-model="form.walletAddress" :class="{'is-invalid': errors.message }" type="text" placeholder="Wallet Address" required>
+                                    <input class="form-control" v-model="form.walletAddress" :class="{'is-invalid': errors.message }" type="text" placeholder="Wallet Address">
                                 </div>
                             </div>
                             <div class="col-md-12 mb-2">
                                 <div class="form-group">
                                     <label class="form-control-label">Minimun Trade Amount</label>
-                                    <input class="form-control" v-model="form.tradeAmount" :class="{'is-invalid': errors.message }" type="number" placeholder="Min Trade Amount" required>
+                                    <input class="form-control" v-model="form.tradeAmount" :class="{'is-invalid': errors.message }" type="number" placeholder="Min Trade Amount">
                                 </div>
                             </div>
                             <div class="col-md-12 mb-2">
                                 <div class="form-group">
                                     <label class="form-control-label">Exchange Rate</label>
-                                    <input class="form-control" v-model="form.exchangeRate" :class="{'is-invalid': errors.message }" type="number" placeholder="Exchange Rate" required>
+                                    <input class="form-control" v-model="form.exchangeRate" :class="{'is-invalid': errors.message }" type="number" placeholder="Exchange Rate">
                                     
                                     <div class="invalid-feedback" v-if="errors.message">
                                         <ul>
@@ -53,7 +53,7 @@
                             <div class="col-auto my-2 ml-auto">
                                 <button type="submit" class="btn hover-translate-y-n3">
                                     <span class="fas fa-spinner fa-spin mr-2" v-if="loading"></span>
-                                    Create Crypto
+                                    Update Crypto
                                 </button>
                             </div>
                         </div>
@@ -63,6 +63,7 @@
         </div>
     </section>
 </template>
+
 
 <script>
     export default {
@@ -95,7 +96,6 @@
 
 
         methods: {
-            
             uploadImage(e){
                 try {
                     const photo = e.target.files[0];

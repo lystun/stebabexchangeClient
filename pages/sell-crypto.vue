@@ -277,8 +277,8 @@
                 },
                 
                 form :{
-                    fame: '',
-                    lame: '',
+                    fname: '',
+                    lname: '',
                     name: '',
                     email: '',
                     phoneNumber: '',

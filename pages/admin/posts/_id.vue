@@ -31,9 +31,15 @@
                                 </div>
                             </div>
 
+                    
+
                             <div class="col-md-12 mb-2">
                                 <label for="content">Post Content</label>
-                                <textarea id="content" class="form-control" v-model="form.content"  placeholder="Post Content" rows="10" required></textarea>
+                                <div class="quill-editor" 
+                                    :content="form.content"
+                                    v-quill:myQuillEditor="editorOption"
+                                    @change="onEditorChange($event)" >
+                                </div>
                             </div>
 
                             <div>
@@ -68,6 +74,16 @@
         data(){
             return {
                 loading: false,
+                
+                editorOption: {
+                    // some quill options
+                    modules: {
+                        toolbar: [
+                        ['bold', 'italic', 'underline', 'strike'],
+                        ['blockquote', 'code-block']
+                        ]
+                    }
+                },
 
                 form : {
                     title: '',
